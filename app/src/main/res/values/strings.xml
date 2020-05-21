@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <!-- Loading screen. -->
+    <string name="main_title">Julia\'s nights</string>
+    <string name="main_subtitle">start planning</string>
+    <string name="APP_PREFERENCES">UserSettings</string>
+
+    <!-- Instruction screen. -->
+    <string name="instruction_next">Next</string>
+    <string name="intro_image">intro_image</string>
+
+</resources>
