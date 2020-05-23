@@ -52,15 +52,10 @@ public class Instruction extends AppCompatActivity {
         introViewPagerAdapter = new IntroViewPagerAdapter(this,introScreensList);
         viewPager.setAdapter(introViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = viewPager.getCurrentItem();
-                if (position == 1)
-                {
-                    nextButton.setText("start now");
-                }
                 if ( position == 2 ){
                     Intent intent = new Intent(Instruction.this,MainDashBoard.class);
                     startActivity(intent);
@@ -69,6 +64,25 @@ public class Instruction extends AppCompatActivity {
                 else viewPager.setCurrentItem(++position);
             }
         });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if ((position < 2)) {
+                    nextButton.setText("Next");
+                } else {
+                    nextButton.setText("start now");
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }
