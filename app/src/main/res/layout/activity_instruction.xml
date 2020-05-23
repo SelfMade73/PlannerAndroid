@@ -19,7 +19,10 @@
         app:layout_constraintVertical_bias="0.363" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tab_indicator"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabIndicatorHeight="0dp"
         android:layout_width="136dp"
         android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,23 +30,7 @@
         app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intro_view_pager"
-        app:layout_constraintVertical_bias="0.496">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Monday" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tuesday" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wednesday" />
-    </com.google.android.material.tabs.TabLayout>
+        app:layout_constraintVertical_bias="0.496"/>
 
     <Button
         android:id="@+id/button_instruction_next"
@@ -53,6 +40,6 @@
         android:text="@string/instruction_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tabLayout"
+        app:layout_constraintStart_toEndOf="@+id/tab_indicator"
         app:layout_constraintTop_toBottomOf="@+id/intro_view_pager" />
 </androidx.constraintlayout.widget.ConstraintLayout>

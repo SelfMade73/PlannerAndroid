@@ -3,9 +3,15 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TableLayout;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +20,8 @@ public class Instruction extends AppCompatActivity {
 
     private ViewPager viewPager;
     private IntroViewPagerAdapter introViewPagerAdapter;
+    private TabLayout tabLayout;
+    private Button nextButton;
 
 
     @Override
@@ -38,9 +46,29 @@ public class Instruction extends AppCompatActivity {
                 "Your future is under control",
                 R.drawable.note));
 
-
-        viewPager = findViewById(R.id.intro_view_pager);
+        tabLayout = findViewById(R.id.tab_indicator);
+        viewPager   = findViewById(R.id.intro_view_pager);
+        nextButton = findViewById(R.id.button_instruction_next);
         introViewPagerAdapter = new IntroViewPagerAdapter(this,introScreensList);
         viewPager.setAdapter(introViewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = viewPager.getCurrentItem();
+                if (position == 1)
+                {
+                    nextButton.setText("start now");
+                }
+                if ( position == 2 ){
+                    Intent intent = new Intent(Instruction.this,MainDashBoard.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else viewPager.setCurrentItem(++position);
+            }
+        });
+
     }
 }
