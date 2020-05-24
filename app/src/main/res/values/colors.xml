@@ -7,4 +7,6 @@
     <color name="darkThemesMain">#322153</color>
     <color name="default_intro_indicator">#cfb3d7</color>
     <color name="darkThemeMain">#d1c4e9</color>
+    <color name="mainGreen">#00F2A9</color>
+
 </resources>

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp"
     android:background="@color/darkThemeMain"
     tools:context=".Instruction">
 
@@ -34,6 +33,7 @@
 
     <Button
         android:id="@+id/button_instruction_next"
+        android:background="@drawable/next_btn"
         android:drawableEnd="@drawable/ic_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
