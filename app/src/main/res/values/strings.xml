@@ -9,5 +9,16 @@
     <!-- Instruction screen. -->
     <string name="instruction_next">Next</string>
     <string name="intro_image">intro_image</string>
+    <string name="start_now">start now</string>
 
+
+    <!-- main dash board -->
+    <string name="dark_theme">Enable Dark Theme</string>
+    <string name="notification_settings">Show me notifications</string>
+    <string name="quick_notes">Check list</string>
+    <string name="big_notes">notes</string>
+    <string name="stat">statistics</string>
+
+    <string name="new_task">What\'s TODO</string>
+    <string name="todo_submit">Submit</string>
 </resources>

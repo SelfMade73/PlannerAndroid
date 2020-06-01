@@ -2,11 +2,18 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#322153</color>
     <color name="white">#ffffff</color>
     <color name="darkThemesMain">#322153</color>
     <color name="default_intro_indicator">#cfb3d7</color>
     <color name="darkThemeMain">#d1c4e9</color>
     <color name="mainGreen">#00F2A9</color>
 
+    <color name="default_tab_item">#b39ddb</color>
+    <!--<color name="d">#03DAC5</color>-->
+    <color name="bottom_sheet_start">#f0fff9c4</color>
+    <color name="bottom_sheet_center">#f0b39ddb</color>
+    <color name="bottom_sheet_end">#f000F2A9</color>
+    <color name="exp">#f8fce2</color>
+    <color name="dark_theme_main">#27292D</color>
 </resources>

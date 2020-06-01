@@ -1,39 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkThemeMain"
     tools:context=".MainDashBoard">
 
+
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
+        app:tabTextColor="@color/default_tab_item"
+        app:tabSelectedTextColor="@color/darkThemesMain"
+        app:tabRippleColor="@android:color/transparent"
+        android:id="@+id/tab_layout_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorHeight="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toTopOf="@id/main_view_pager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:tabTextColor="@color/white">
-
+        app:layout_constraintVertical_bias="0.0" >
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/soon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:text="@string/quick_notes"/>
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/future"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/big_notes"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/stat"
+            />
     </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/main_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:paddingBottom="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout_main" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <include layout="@layout/bottom_sheet" />
 
@@ -41,12 +62,15 @@
             android:id="@+id/fab_new_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
             android:clickable="true"
             android:focusable="true"
             app:layout_anchor="@+id/bottom_sheet"
             app:layout_anchorGravity="top|end"
-            android:layout_marginRight="50dp"
             app:srcCompat="@android:drawable/ic_menu_edit" />
 
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

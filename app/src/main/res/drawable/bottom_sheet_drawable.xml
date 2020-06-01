@@ -4,15 +4,15 @@
         <shape android:shape="rectangle">
             <size android:width="30dp"
                 android:height="30dp"/>
-
+            <stroke android:color="@color/darkThemesMain"
+                    android:width="1dp"/>
             <corners android:topRightRadius="30dp"
                      android:topLeftRadius  ="30dp"/>
-            <gradient android:startColor="@color/white"
-                    android:endColor="@color/mainGreen"
-                    android:centerColor="@color/darkThemeMain"
+            <gradient android:startColor="@color/bottom_sheet_start"
+                    android:centerColor="@color/bottom_sheet_center"
+                    android:endColor="@color/bottom_sheet_end"
                     android:angle="-90"/>
-            <stroke android:width="3dp"
-                    android:color="@color/darkThemeMain"/>
+
 
         </shape>
     </item>

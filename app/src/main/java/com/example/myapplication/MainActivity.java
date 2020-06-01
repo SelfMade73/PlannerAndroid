@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences UserSettings = getSharedPreferences(getString(R.string.APP_PREFERENCES),
                                                               Context.MODE_PRIVATE);
 
+        boolean isFirstTime = UserSettings.getBoolean("isFirstTime",true);
+
+
 
         animationView.addAnimatorListener( new Animator.AnimatorListener() {
             @Override
@@ -68,8 +71,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(MainActivity.this,Instruction.class);
-                intent.putExtra("FileNames",files);
+                Intent intent;
+                if (isFirstTime){
+                    intent = new Intent(MainActivity.this,Instruction.class);
+                } else{
+                    intent = new Intent(MainActivity.this, MainDashBoard.class);
+                    intent.putExtra("FileNames",files);
+                }
                 startActivity(intent);
                 finish();
             }
