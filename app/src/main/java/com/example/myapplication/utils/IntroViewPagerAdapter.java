@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.myapplication.R;
+import com.example.myapplication.models.InstructionItem;
+
 import java.util.List;
 
 public class IntroViewPagerAdapter extends PagerAdapter {
@@ -17,7 +20,7 @@ public class IntroViewPagerAdapter extends PagerAdapter {
     private Context context;
     private List<InstructionItem> introScreensList;
 
-    IntroViewPagerAdapter(Context context, List<InstructionItem> introScreensList){
+    public IntroViewPagerAdapter(Context context, List<InstructionItem> introScreensList){
         this.context = context;
         this.introScreensList = introScreensList;
     }

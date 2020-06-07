@@ -1,7 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.utils;
 
 import android.graphics.Paint;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayDeque;
+import com.example.myapplication.R;
+import com.example.myapplication.models.CheckItem;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private ArrayList<CheckItem> cards;
 
-    RecyclerViewAdapter(ArrayList<CheckItem> cards){
+    public RecyclerViewAdapter(ArrayList<CheckItem> cards){
         this.cards = cards;
     }
 
@@ -41,18 +40,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         cards.get(position).setIsComplete(!cards.get(position).getIsComplete());
         notifyItemChanged(position);
     }
-    //start with 1 - complete task , 0 - not complete yet
-    public ArrayList<String> getTodoListAsStringList() {
-        ArrayList <String> result = new ArrayList<>();
-        for (CheckItem card : cards){
-            if (card.getIsComplete()){
-                result.add("1".concat(card.getTask()));
-            }else {
-                result.add("0".concat(card.getTask()));
-            }
 
-        }
-        return  result;
+    public ArrayList<CheckItem> getTodoListAsArrayList() {
+        return cards;
     }
 
     public void itemToTop(int position) {

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.models;
 
 import android.widget.CheckBox;
 
@@ -16,20 +16,22 @@ public class CheckItem {
         this.is_complete = is_complete;
     }
 
-    String getTask(){
+    public CheckItem() {}
+
+    public String getTask(){
         return this.task;
     }
 
-    boolean getIsComplete(){
+    public boolean getIsComplete(){
         return this.is_complete;
     }
 
 
-    void setTask(String task){
+    public void setTask(String task){
         this.task = task;
     }
 
-    void setIsComplete(boolean is_complete){
+    public void setIsComplete(boolean is_complete){
         this.is_complete = is_complete;
     }
 

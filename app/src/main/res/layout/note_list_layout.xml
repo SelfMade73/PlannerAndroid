@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
-        android:translationZ="1dp"
         android:gravity="center"
+        android:translationZ="1dp"
         android:minHeight="45dp"
         android:background="@drawable/check_input"
-        android:paddingHorizontal="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_check_list"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_notes_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,31 +26,22 @@
         app:layout_constraintVertical_bias="0.00">
 
         <EditText
-            android:id="@+id/new_check"
-            android:layout_width="wrap_content"
+            android:id="@+id/search_note"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
             android:minWidth="250dp"
             android:maxWidth="250dp"
-            android:layout_marginRight="20dp"
             android:background="@drawable/check_input_form"
             android:maxLines="2"
             android:minHeight="40dp"
-            android:hint="@string/new_task" />
+            android:hint="@string/search_in_notes" />
 
-        <Button
-            android:id="@+id/add_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@drawable/next_btn"
-            android:minWidth="100dp"
-            android:minHeight="40dp"
-            android:text="add" />
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_check_list"
+        android:id="@+id/recycler_notes_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"

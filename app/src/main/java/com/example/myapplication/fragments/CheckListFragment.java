@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.fragments;
 
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
@@ -18,10 +18,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import com.example.myapplication.R;
+import com.example.myapplication.models.CheckItem;
+import com.example.myapplication.utils.RecyclerItemClickListener;
+import com.example.myapplication.utils.RecyclerViewAdapter;
+
 import java.util.ArrayList;
 
 public class CheckListFragment  extends Fragment {
@@ -110,10 +111,10 @@ public class CheckListFragment  extends Fragment {
 
 
 
-    @Override
+    /*@Override
     public void onStop() {
         super.onStop();
-        File todoFile = new File( getContext().getFilesDir(),CONSTANTS.todoFileName);
+        File todoFile = new File( getContext().getFilesDir(), CONSTANTS.todoFileName);
         try {
             BufferedWriter todoWriter = new BufferedWriter(new FileWriter(todoFile, false));
             ArrayList<String> todo = recyclerViewAdapter.getTodoListAsStringList();
@@ -125,6 +126,7 @@ public class CheckListFragment  extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
+
 
 }

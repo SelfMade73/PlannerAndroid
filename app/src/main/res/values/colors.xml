@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#322153</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
     <color name="darkThemesMain">#322153</color>
     <color name="default_intro_indicator">#cfb3d7</color>
     <color name="darkThemeMain">#d1c4e9</color>

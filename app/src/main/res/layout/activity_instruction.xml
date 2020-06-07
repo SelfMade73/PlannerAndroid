@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkThemeMain"
-    tools:context=".Instruction">
+    tools:context=".activities.Instruction">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/intro_view_pager"
