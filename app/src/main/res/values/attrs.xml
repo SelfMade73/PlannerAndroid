@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ds">
+        <attr name="backColor" format="color"/>
+        <attr name="fontColor" format="color"/>
+        <attr name="cardsColor" format="color"/>
+        <attr name="defaultTabColor" format="color"/>
+        <attr name="selectedTabColor" format="color"/>
+        <attr name="outlineColor" format="color"/>
+        <attr name="fabColor" format="color"/>
+        <attr name="noteInputColor" format="color"/>
+        noteInputColor
+    </declare-styleable>
+</resources>

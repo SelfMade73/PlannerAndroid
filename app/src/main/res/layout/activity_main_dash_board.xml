@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkThemeMain"
+    android:background="?attr/backColor"
     tools:context=".activities.MainDashBoard">
 
-
     <com.google.android.material.tabs.TabLayout
-        app:tabTextColor="@color/default_tab_item"
-        app:tabSelectedTextColor="@color/darkThemesMain"
+        app:tabTextColor="?attr/defaultTabColor"
+        app:tabIndicatorColor="?attr/selectedTabColor"
+        app:tabSelectedTextColor="?attr/selectedTabColor"
         app:tabRippleColor="@android:color/transparent"
         android:id="@+id/tab_layout_main"
         android:layout_width="match_parent"
@@ -62,8 +62,9 @@
             android:id="@+id/fab_new_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
+            android:layout_marginEnd="50dp"
             android:clickable="true"
+            app:backgroundTint="?attr/fabColor"
             android:focusable="true"
             app:layout_anchor="@+id/bottom_sheet"
             app:layout_anchorGravity="top|end"

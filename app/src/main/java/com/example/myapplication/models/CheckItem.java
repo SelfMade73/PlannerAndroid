@@ -1,19 +1,27 @@
 package com.example.myapplication.models;
 
-import android.widget.CheckBox;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
-public class CheckItem {
+import com.example.myapplication.activities.CONSTANTS;
+import com.example.myapplication.utils.CheckConverter;
+
+import java.io.Serializable;
+
+@Entity(tableName = CONSTANTS.TASKS_TABLE_NAME)
+public class CheckItem implements Serializable {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
     private String task;
-    private boolean is_complete = false;
+
+    @TypeConverters(CheckConverter.class)
+    private boolean complete = false;
 
     public CheckItem (String task){
         this.task = task;
-    }
-
-
-    public CheckItem (String task,boolean is_complete){
-        this.task = task;
-        this.is_complete = is_complete;
     }
 
     public CheckItem() {}
@@ -22,17 +30,24 @@ public class CheckItem {
         return this.task;
     }
 
-    public boolean getIsComplete(){
-        return this.is_complete;
+    public boolean getComplete(){
+        return this.complete;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setTask(String task){
         this.task = task;
     }
 
-    public void setIsComplete(boolean is_complete){
-        this.is_complete = is_complete;
+    public void setComplete(boolean is_complete){
+        this.complete = is_complete;
     }
 
 }

@@ -3,5 +3,5 @@
         android:shape="rectangle">
     <corners android:bottomLeftRadius="30dp"
              android:bottomRightRadius="30dp"/>
-    <solid android:color="@color/default_tab_item"/>
+    <solid android:color="?attr/cardsColor"/>
 </shape>

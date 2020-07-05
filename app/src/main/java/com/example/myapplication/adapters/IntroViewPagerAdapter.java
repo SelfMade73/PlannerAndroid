@@ -1,4 +1,4 @@
-package com.example.myapplication.utils;
+package com.example.myapplication.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -25,8 +25,6 @@ public class IntroViewPagerAdapter extends PagerAdapter {
         this.introScreensList = introScreensList;
     }
 
-
-
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -40,7 +38,6 @@ public class IntroViewPagerAdapter extends PagerAdapter {
         introTitle.setText(introScreensList.get(position).getInstructionTitle());
         introSubTitle.setText(introScreensList.get(position).getInstructionDescription());
         imgView.setImageResource(introScreensList.get(position).getIntroImg());
-
 
         container.addView(layoutScreen);
         return layoutScreen;

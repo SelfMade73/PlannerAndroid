@@ -1,6 +1,4 @@
-package com.example.myapplication.utils;
-
-import android.content.Context;
+package com.example.myapplication.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,12 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainViewPagerAdapter  extends FragmentPagerAdapter {
-    private Context context;
     private List<Fragment> fragments = new ArrayList<>();
     private List<String>    pageTitles = new ArrayList<>();
 
     public MainViewPagerAdapter(FragmentManager fm) {
-        super(fm);
+        super(fm,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
 
     @Override

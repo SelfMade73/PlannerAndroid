@@ -6,7 +6,7 @@
             android:innerRadius="0dp"
             android:thickness="5dp"
             android:useLevel="false">
-            <solid android:color="@color/default_intro_indicator"/>
+            <solid android:color="?attr/defaultTabColor"/>
         </shape>
     </item>
 </layer-list>

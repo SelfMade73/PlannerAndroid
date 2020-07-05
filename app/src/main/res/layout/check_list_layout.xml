@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkThemeMain"
     >
 
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:translationZ="1dp"
+        android:layout_height="70dp"
+        android:translationZ="20dp"
         android:gravity="center"
         android:minHeight="45dp"
         android:background="@drawable/check_input"
@@ -25,6 +23,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.00">
 
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="?attr/fontColor"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="scroll|enterAlways"
+            >
         <EditText
             android:id="@+id/new_check"
             android:layout_width="wrap_content"
@@ -32,9 +37,13 @@
             android:paddingHorizontal="10dp"
             android:minWidth="250dp"
             android:maxWidth="250dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_marginRight="20dp"
+            android:inputType="textCapSentences"
             android:background="@drawable/check_input_form"
             android:maxLines="2"
+            android:textColor="?attr/fontColor"
             android:minHeight="40dp"
             android:hint="@string/new_task" />
 
@@ -46,8 +55,11 @@
             android:background="@drawable/next_btn"
             android:minWidth="100dp"
             android:minHeight="40dp"
-            android:text="add" />
-    </LinearLayout>
+            android:textColor="?attr/fontColor"
+            android:text="@string/add_task" />
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_check_list"
@@ -55,11 +67,11 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="130dp"
-        android:paddingTop="15dp"
+        android:paddingTop="70dp"
         android:overScrollMode="never"
-        android:background="@color/darkThemeMain"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="-75dp"
         android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,4 +80,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.427" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

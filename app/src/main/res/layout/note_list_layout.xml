@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkThemeMain"
     >
 
-
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
+        android:layout_height="70dp"
+        android:animateLayoutChanges="true"
+        android:translationZ="20dp"
         android:gravity="center"
-        android:translationZ="1dp"
-        android:minHeight="45dp"
         android:background="@drawable/check_input"
         android:paddingHorizontal="20dp"
+
+
         app:layout_constraintBottom_toTopOf="@+id/recycler_notes_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -25,20 +25,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.00">
 
-        <EditText
-            android:id="@+id/search_note"
+
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="10dp"
-            android:minWidth="250dp"
-            android:maxWidth="250dp"
-            android:background="@drawable/check_input_form"
-            android:maxLines="2"
-            android:minHeight="40dp"
-            android:hint="@string/search_in_notes" />
+            android:layout_height="match_parent"
+            android:backgroundTint="?attr/fontColor"
+            android:textColorPrimary="?attr/fontColor"
+            android:textColorSecondary="?attr/fontColor"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="scroll|enterAlways"
+            >
 
+                <SearchView
+                    android:closeIcon="@drawable/ic_close"
+                    android:theme="@style/SearchViewStyle"
+                    android:id="@+id/search_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="10dp"
+                    android:layout_marginVertical="10dp"
+                    android:queryHint="@string/search_in_notes"
+                    android:background="@drawable/check_input_form"
+                    android:maxLines="2"
+                    android:searchIcon="@drawable/ic_find"
+                    android:iconifiedByDefault="false"
+                    android:clickable="true"
+                    app:layout_anchorGravity="bottom|end"
+                    android:inputType="textCapSentences"
+                    android:hint="@string/search_in_notes"
+                    android:focusable="true"
+                    android:defaultFocusHighlightEnabled="false"
+                    android:focusableInTouchMode="true" />
 
-    </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_notes_list"
@@ -46,11 +68,11 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="130dp"
-        android:paddingTop="15dp"
+        android:paddingTop="70dp"
         android:overScrollMode="never"
-        android:background="@color/darkThemeMain"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="-75dp"
         android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,4 +81,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.427" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkThemeMain"
+    android:background="?attr/backColor"
     tools:context=".activities.MainActivity">
 
     <TextView
@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/main_title"
+        android:fontFamily="@font/cousine_bold_italic"
         android:textAllCaps="true"
-        android:textColor="@color/darkThemesMain"
+        android:textColor="?attr/fontColor"
         android:textSize="40sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +46,7 @@
         android:gravity="center"
         android:text="@string/main_subtitle"
         android:textAllCaps="true"
-        android:textColor="@color/darkThemesMain"
+        android:textColor="?attr/fontColor"
         android:textSize="20sp"
 
 

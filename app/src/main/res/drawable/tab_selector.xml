@@ -6,7 +6,7 @@
         android:innerRadius="0dp"
         android:thickness="5dp"
         android:useLevel="false">
-        <solid android:color="@color/darkThemesMain"/>
+        <solid android:color="?attr/selectedTabColor"/>
     </shape>
 </item>
     <item  android:drawable="@drawable/tab_indicator_default" android:state_selected="false">
@@ -15,7 +15,7 @@
             android:innerRadius="0dp"
             android:thickness="5dp"
             android:useLevel="false">
-            <solid android:color="@color/default_intro_indicator"/>
+            <solid android:color="?attr/defaultTabColor"/>
         </shape>
     </item>
 </selector>

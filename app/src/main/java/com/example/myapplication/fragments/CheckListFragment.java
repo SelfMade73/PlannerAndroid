@@ -1,132 +1,96 @@
 package com.example.myapplication.fragments;
 
-import android.app.Dialog;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.*;
 
 import com.example.myapplication.R;
+import com.example.myapplication.adapters.RecyclerViewAdapterTasks;
+import com.example.myapplication.data.AppDataBase;
 import com.example.myapplication.models.CheckItem;
-import com.example.myapplication.utils.RecyclerItemClickListener;
-import com.example.myapplication.utils.RecyclerViewAdapter;
+import com.example.myapplication.utils.*;
 
-import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class CheckListFragment  extends Fragment {
 
-    private ArrayList<CheckItem> cards;
-    public RecyclerViewAdapter recyclerViewAdapter;
+    private ObservableRxList<CheckItem> cards;
+    public RecyclerViewAdapterTasks recyclerViewAdapter;
+    public RecyclerView recyclerView;
     private Button addCheckItem;
     private EditText editText;
-    private View checkItem;
-    private Dialog editDialog;
+    private AppDataBase database;
+    private CompositeDisposable disposableList = new CompositeDisposable();
 
-
-    public CheckListFragment(ArrayList<CheckItem> cards){
+    public CheckListFragment(ObservableRxList<CheckItem> cards){
         this.cards = cards;
-
+        recyclerViewAdapter = new RecyclerViewAdapterTasks(cards);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.check_list_layout,container,false);
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_check_list);
+        recyclerView = view.findViewById(R.id.recycler_check_list);
+        editText = view.findViewById(R.id.new_check);
+        addCheckItem = view.findViewById(R.id.add_check);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
+
         recyclerView.setLayoutManager(layoutManager);
-        recyclerViewAdapter = new RecyclerViewAdapter(cards);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(recyclerViewAdapter);
 
-        editText = view.findViewById(R.id.new_check);
-        checkItem = view.findViewById(R.id.is_complete);
-        addCheckItem = view.findViewById(R.id.add_check);
+        this.database = AppDataBase.getInstance(this.getContext());
+
         addCheckItem.setOnClickListener((v) -> {
-            String newTaskToCheckList = editText.getText().toString();
+            String newTaskToCheckList = editText.getText().toString().trim();
             if (! newTaskToCheckList.equals("")){
-                recyclerViewAdapter.setItem(new CheckItem(newTaskToCheckList));
+                CheckItem item = new CheckItem(newTaskToCheckList);
+                recyclerViewAdapter.setItem(item);
                 editText.setText("");
                 recyclerView.scrollToPosition(recyclerViewAdapter.getItemCount() - 1);
             }
+
         });
-        editDialog = new Dialog(getContext());
-        editDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        disposableList.add(cards.getObservable()
+                .debounce(1,TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.newThread())
+                .subscribe(list -> database.saveTasks(list)));
 
         recyclerView.addOnItemTouchListener( new RecyclerItemClickListener(recyclerView.getContext(),
-                                             recyclerView,
-                                             new RecyclerItemClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-
-                CheckBox checkBox = view.findViewById(R.id.is_complete);
-                TextView textView = view.findViewById(R.id.task);
-                checkBox.setChecked(!checkBox.isChecked());
-                recyclerViewAdapter.toggleItem(position);
-            }
-
-            @Override
-            public void onLongItemClick(View view, int position) {
-                showEditDialog(view, position);
-            }
-        }));
-
+                recyclerView, (view1, position) -> {
+                        CheckItem selectedItem = recyclerViewAdapter.getItem( position );
+                        editText.setText( selectedItem.getTask() );
+                }
+        ));
 
         return view;
     }
-    public void showEditDialog (View view ,int position){
-        editDialog.setContentView(R.layout.check_pop_up);
-        Button toTop = editDialog.findViewById(R.id.todo_to_top);
-        Button toEnd = editDialog.findViewById(R.id.todo_to_end);
-        Button delete = editDialog.findViewById(R.id.todo_delete);
 
-        toTop.setOnClickListener((v)-> {
-            recyclerViewAdapter.itemToTop(position);
-            editDialog.dismiss();
-        });
-        toEnd.setOnClickListener((v)-> {
-            recyclerViewAdapter.itemToEnd(position);
-            editDialog.dismiss();
-        });
-        delete.setOnClickListener((v)-> {
-            recyclerViewAdapter.deleteItem(position);
-            editDialog.dismiss();
-        });
-        editDialog.show();
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        this.cards.notifyAndUpdate();
     }
 
-
-
-    /*@Override
-    public void onStop() {
-        super.onStop();
-        File todoFile = new File( getContext().getFilesDir(), CONSTANTS.todoFileName);
-        try {
-            BufferedWriter todoWriter = new BufferedWriter(new FileWriter(todoFile, false));
-            ArrayList<String> todo = recyclerViewAdapter.getTodoListAsStringList();
-            for (String str : todo) {
-                todoWriter.write(str + "\n");
-               // todoWriter.newLine();
-            }
-            todoWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
-
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.disposableList.clear();
+    }
 }

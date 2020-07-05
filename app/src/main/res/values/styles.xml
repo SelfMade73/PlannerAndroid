@@ -3,9 +3,57 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/_light_cards_back</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="backColor">@color/_light_main</item>
+        <item name="fontColor">@color/_light_font</item>
+        <item name="cardsColor">@color/_light_cards_back</item>
+        <item name="selectedTabColor">@color/_light_selected_tab</item>
+        <item name="defaultTabColor">@color/_light_default_tab</item>
+        <item name="outlineColor">@color/_light_font</item>
+        <item name="android:textColorHint">@color/_light_font</item>
+        <item name="fabColor">@color/_light_font</item>
+        <item name="noteInputColor">@color/_dark_default_tab</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnim</item>
+    </style>
+
+
+
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/_light_cards_back</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="backColor">@color/_dark_main</item>
+        <item name="fontColor">@color/_dark_font</item>
+        <item name="cardsColor">@color/_dark_cards_back</item>
+        <item name="selectedTabColor">@color/_dark_selected_tab</item>
+        <item name="defaultTabColor">@color/_dark_default_tab</item>
+        <item name="outlineColor">@color/_dark_selected_tab</item>
+        <item name="fabColor">@color/_dark_selected_tab</item>
+        <item name="noteInputColor">@color/dark_theme_main</item>
+        <item name="android:textColorHint">@color/_dark_font</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnim</item>
+    </style>
+
+    <style name="WindowAnim">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:interpolator">@android:anim/linear_interpolator</item>
+        <item name="android:windowActivityTransitions">true</item>
+
+
+        <item name="android:animationDuration">@android:integer/config_longAnimTime</item>
+    </style>
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColor">?attr/fontColor</item>
+        <item name="android:editTextColor">?attr/fontColor</item>
+        <item name="android:textColorHint">?attr/fontColor</item>
     </style>
 
 </resources>

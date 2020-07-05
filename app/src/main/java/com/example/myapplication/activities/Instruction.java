@@ -1,19 +1,20 @@
 package com.example.myapplication.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.example.myapplication.R;
 import com.example.myapplication.models.InstructionItem;
-import com.example.myapplication.utils.IntroViewPagerAdapter;
+import com.example.myapplication.adapters.IntroViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -22,45 +23,48 @@ import java.util.List;
 public class Instruction extends AppCompatActivity {
 
     private ViewPager viewPager;
-    private IntroViewPagerAdapter introViewPagerAdapter;
+    private IntroViewPagerAdapter adapter;
     private TabLayout tabLayout;
     private Button nextButton;
     SharedPreferences UserSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        UserSettings =  getSharedPreferences(getString(R.string.APP_PREFERENCES),
+                Context.MODE_PRIVATE);
+        if (UserSettings.contains(CONSTANTS.THEME) && UserSettings.getBoolean(CONSTANTS.THEME,false)){
+            setTheme(R.style.DarkTheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instruction);
-        @SuppressWarnings("unchecked")
-        ArrayList<String> questions = (ArrayList<String>)getIntent().getSerializableExtra("FileNames");
         Window window = getWindow();
         //transparent status bar
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                         WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
         List<InstructionItem> introScreensList = new ArrayList<>();
-        introScreensList.add(new InstructionItem("Save time",
-                "Time is the most important thing\n that we have",
-                R.drawable.stopwatch));
-        introScreensList.add(new InstructionItem("Plan your purchases",
-                "It helps you save more money",
-                R.drawable.shopping));
-        introScreensList.add(new InstructionItem("Write quick notes",
-                "Your future is under control",
-                R.drawable.note));
-        UserSettings =  getSharedPreferences(getString(R.string.APP_PREFERENCES),
-                                                        Context.MODE_PRIVATE);
+
+        String [] titles = getResources().getStringArray(R.array.titles);
+        String [] descriptions = getResources().getStringArray(R.array.descriptions);
+        TypedArray img = getResources().obtainTypedArray(R.array.intro_img);
+
+        for (int i = 0; i < 3 ;++i)
+            introScreensList.add(new InstructionItem(titles[i],descriptions[i],img.getResourceId(i,0)));
+
+        img.recycle();
+
+
         tabLayout = findViewById(R.id.tab_indicator);
         viewPager   = findViewById(R.id.intro_view_pager);
         nextButton = findViewById(R.id.button_instruction_next);
-        introViewPagerAdapter = new IntroViewPagerAdapter(this,introScreensList);
-        viewPager.setAdapter(introViewPagerAdapter);
+        adapter = new IntroViewPagerAdapter(this,introScreensList);
+        viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
         nextButton.setOnClickListener((view) -> {
             int position = viewPager.getCurrentItem();
-            if ( position == 2 ){
+            if ( position == adapter.getCount() - 1 ){
                 Intent intent = new Intent(Instruction.this,MainDashBoard.class);
-                UserSettings.edit().putBoolean("isFirstTime",false).apply();
+                UserSettings.edit().putBoolean( CONSTANTS.IS_FIRST_TIME, false ).apply();
                 startActivity(intent);
                 finish();
             }
@@ -69,23 +73,17 @@ public class Instruction extends AppCompatActivity {
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
             @Override
             public void onPageSelected(int position) {
-                if ((position < 2)) {
-                    nextButton.setText(getString(R.string.instruction_next));
-                } else {
-                    nextButton.setText(getString(R.string.start_now));
-                }
+                nextButton.setText(getString((position < adapter.getCount() - 1) ?
+                        R.string.instruction_next:
+                        R.string.start_now ));
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
+            public void onPageScrollStateChanged(int state) {}
         });
     }
 }

@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Easy Planner</string>
 
     <!-- Loading screen. -->
-    <string name="main_title">Julia\'s nights</string>
+    <string name="main_title">Easy Planner</string>
     <string name="main_subtitle">start planning</string>
     <string name="APP_PREFERENCES">UserSettings</string>
 
@@ -10,6 +10,19 @@
     <string name="instruction_next">Next</string>
     <string name="intro_image">intro_image</string>
     <string name="start_now">start now</string>
+
+    <string-array name="titles">
+        <item>Save time</item>
+        <item>Plan your purchases</item>
+        <item>Write quick notes</item>
+    </string-array>
+
+    <string-array name="descriptions">
+        <item>Time is the most important thing \n that we have</item>
+        <item>It helps you save more money</item>
+        <item>Your future is under control</item>
+    </string-array>
+
 
 
     <!-- main dash board -->
@@ -22,10 +35,20 @@
     <string name="new_task">What\'s TODO</string>
     <string name="todo_submit">Submit</string>
 
+    <string name="chart_label_1">Your Progress</string>
+    <string name="chart_label_2">Your Plans</string>
+    <string name="chart_label_3">Notes count</string>
+
     <!-- create note board -->
     <string name="title">Title</string>
     <string name="note_hint">Your Note</string>create_note
     <string name="create_note">create note</string>
     <string name="search_in_notes">Search in notes</string>
+    <string name="add_task">add</string>
+    <string name="productivity_chart">Productivity chart</string>
+    <!-- pop menu -->
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="start_planning_chart">Start plannig to see your results!</string>
 
 </resources>

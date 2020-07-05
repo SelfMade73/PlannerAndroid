@@ -1,12 +1,41 @@
 package com.example.myapplication.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+
+import com.example.myapplication.activities.CONSTANTS;
+import com.example.myapplication.utils.DateConverter;
+
 import java.io.Serializable;
 import java.util.Date;
 
+
+@Entity(tableName = CONSTANTS.NOTES_TABLE_NAME)
 public class NoteItem implements Serializable {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String title;
     private String description;
+
+    @TypeConverters(DateConverter.class)
     private Date  date;
+
+    public NoteItem ( int id, String title, String description, Date date ){
+        this(title, description, date);
+        this.id = id;
+    }
+
 
     public NoteItem (String title, String description, Date date){
         this.title = title;
@@ -44,11 +73,4 @@ public class NoteItem implements Serializable {
         return ((title==null) && (description==null));
     }
 
-    public long getDateAsLong(){
-        return this.date.getTime();
-    }
-
-    public void setDateFromInteger(long time ) {
-        this.date = new Date(time);
-    }
 }

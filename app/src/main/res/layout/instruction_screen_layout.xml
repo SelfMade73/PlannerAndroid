@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/darkThemeMain"
+    android:background="?attr/backColor"
     android:layout_height="match_parent">
 
     <ImageView
@@ -25,7 +25,7 @@
         android:gravity="center"
         android:text="@string/main_title"
         android:textAllCaps="true"
-        android:textColor="@color/darkThemesMain"
+        android:textColor="?attr/fontColor"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         android:gravity="center"
         android:text="@string/main_title"
         android:textAllCaps="true"
-        android:textColor="@color/darkThemesMain"
+        android:textColor="?attr/fontColor"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

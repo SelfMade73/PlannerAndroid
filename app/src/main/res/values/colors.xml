@@ -3,18 +3,40 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#322153</color>
+
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="darkThemesMain">#322153</color>
-    <color name="default_intro_indicator">#cfb3d7</color>
-    <color name="darkThemeMain">#d1c4e9</color>
-    <color name="mainGreen">#00F2A9</color>
 
-    <color name="default_tab_item">#b39ddb</color>
+    <color name="mainGreen">#00F2A9</color>
+    <color name="default_intro_indicator">#cfb3d7</color>
+
     <!--<color name="d">#03DAC5</color>-->
     <color name="bottom_sheet_start">#f0fff9c4</color>
     <color name="bottom_sheet_center">#f0b39ddb</color>
     <color name="bottom_sheet_end">#f000F2A9</color>
     <color name="exp">#f8fce2</color>
     <color name="dark_theme_main">#27292D</color>
+
+
+    <color name="completed_tasks">#1de9b6</color>
+    <color name="plans">#004d40</color>
+
+    <!-- LIGHT THEME -->
+    <color name="_light_main">#d1c4e9</color>
+    <color name="_light_font">#322153</color>
+    <color name="_light_cards_back">#b39ddb</color>
+    <color name="_light_selected_tab">#322153</color>
+    <color name="_light_default_tab">#b39ddb</color>
+
+
+    <!-- DARK THEME -->
+   <!-- <color name="_dark_main">#000022</color>-->
+    <color name="_dark_main">#181e29</color>
+    <color name="_dark_font">#fffff0</color>
+    <color name="_dark_cards_back">#0e0018</color>
+    <!--<color name="_dark_selected_tab">#ffd500</color>-->
+    <color name="_dark_selected_tab">#ba68c8</color>
+    <color name="_dark_default_tab">#ffcff6</color>
+
+
 </resources>
